@@ -217,11 +217,11 @@ def esperar_continuar():
 
 
 def es_si(s):
-    return s in ("s", "si", "sí", "y", "yes")
+    return s.lower() in ("s", "si", "sí", "y", "yes")
 
 
 def es_no(s):
-    return s in ("n", "no")
+    return s.lower() in ("n", "no")
 
 
 def es_respuesta(s):
