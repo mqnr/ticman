@@ -38,6 +38,11 @@ Transporte Intergaláctico Cajeme, which is Spanish for "Cajeme Intergalactic Tr
 
 It's pretty straightforward. Clone the repository, and at the root, run the `main.py` file with a Python interpreter.
 
+## Team members
+
+- Oscar Adrián Castán López (260318) [[@oacastan](https://github.com/oacastan)]
+- Martín Zamorano Acuña (251923) [[@mzacuna](https://github.com/mzacuna)]
+
 ## License
 
 The MIT License. See `LICENSE` for more.
