@@ -10,7 +10,7 @@ from asientos import (
 )
 from util import (
     es_respuesta,
-    es_si,
+    es_afirmativo,
     esperar_continuar,
     imprimir_encabezado,
     imprimir_error_esperar,
@@ -50,7 +50,7 @@ def comando_registro_de_reservaciones(asientos):
             en_invalido="Respuesta inválida.",
         )
 
-        if es_si(respuesta):
+        if es_afirmativo(respuesta):
             return comando_registro_de_reservaciones(asientos)
         return
 
@@ -102,7 +102,7 @@ def comando_registro_de_reservaciones(asientos):
         en_invalido="Respuesta inválida.",
     )
 
-    if es_si(confirmar):
+    if es_afirmativo(confirmar):
         asiento_actualizar(
             asiento,
             estado=OCUPADO,
@@ -116,7 +116,7 @@ def comando_registro_de_reservaciones(asientos):
         en_invalido="Respuesta inválida.",
     )
 
-    if es_si(continuar):
+    if es_afirmativo(continuar):
         return comando_registro_de_reservaciones(asientos)
 
 

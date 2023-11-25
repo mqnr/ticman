@@ -216,13 +216,35 @@ def esperar_continuar():
     tic_entrada("Presionar <ENTER> para continuar.")
 
 
-def es_si(s):
-    return s in ("s", "si", "sí", "y", "yes")
+def es_afirmativo(s):
+    """
+    Determinar si una cadena de texto entrada por el usuario
+    representa una afirmación. Esta función sanitiza su argumento.
+
+    :param s: la cadena del usuario
+    :returns: booleano confirmando si es una afirmación
+    """
+    return s.strip().lower() in ("s", "si", "sí", "y", "yes")
 
 
-def es_no(s):
-    return s in ("n", "no")
+def es_negativo(s):
+    """
+    Determinar si una cadena de texto entrada por el usuario
+    representa una negación. Esta función sanitiza su argumento.
+
+    :param s: la cadena del usuario
+    :returns: booleano confirmando si es una negación
+    """
+    return s.strip().lower() in ("n", "no")
 
 
 def es_respuesta(s):
-    return es_si(s) or es_no(s)
+    """
+    Determinar si una cadena de texto entrada por el usuario
+    representa una respuesta, ya sea afirmativa o negativa. Esta
+    función sanitiza su argumento.
+
+    :param s: la cadena del usuario
+    :returns: booleano confirmando si es una respuesta
+    """
+    return es_afirmativo(s) or es_negativo(s)
