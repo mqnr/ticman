@@ -1,8 +1,7 @@
+import comandos
 import mapa
-from comandos import *
 from asientos import asiento_vacio
-from destinos import *
-from util import tic_entrada, tic_imprimir, limpiar_pantalla, mensaje_error
+from util import imprimir_error_esperar, tic_entrada, tic_imprimir, limpiar_pantalla
 
 
 def menu_principal():
@@ -24,10 +23,10 @@ def menu_principal():
         opcion = tic_entrada("--- Presionar una de las teclas entre paréntesis --- ")
 
         if opcion == "1":
-            comando_registro_de_reservaciones(asientos)
+            comandos.comando_registro_de_reservaciones(asientos)
             pass
         elif opcion == "2":
-            comando_eliminacion_de_reservaciones(asientos)
+            comandos.comando_eliminacion_de_reservaciones(asientos)
             pass
         elif opcion == "3":
             # manejar opción 3
@@ -36,7 +35,7 @@ def menu_principal():
             # manejar opción 4
             pass
         elif opcion == "5":
-            comando_mapa_de_ocupacion(asientos)
+            comandos.comando_mapa_de_ocupacion(asientos)
         elif opcion == "6":
             # manejar opción 6
             pass

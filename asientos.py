@@ -115,7 +115,10 @@ def imprimir_pasajero_por_datos(
 
 def imprimir_asientos(asientos):
     def f(asiento):
-        return f" {str(mapa.obtener(asiento, 'numero')).rjust(2)} {mapa.obtener(asiento, 'destino_codigo')} "
+        return (
+            f" {str(mapa.obtener(asiento, 'numero')).rjust(2)}"
+            f" {mapa.obtener(asiento, 'destino_codigo')} "
+        )
 
     def o(n):
         return mapa.obtener(asientos, n)

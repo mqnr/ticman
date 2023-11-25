@@ -43,7 +43,9 @@ def comando_registro_de_reservaciones(asientos):
         imprimir_error_esperar("Número del asiento está ocupado.")
 
         respuesta = tic_entrada_ciclo(
-            entrada_texto="¿Se desea continuar con el Registro de Reservaciones, (S/N)? ",
+            entrada_texto=(
+                "¿Se desea continuar con el Registro de Reservaciones, (S/N)? "
+            ),
             validador=lambda x: es_respuesta(x),
             en_invalido="Respuesta inválida.",
         )
@@ -117,11 +119,13 @@ def comando_registro_de_reservaciones(asientos):
     if es_si(continuar):
         return comando_registro_de_reservaciones(asientos)
 
+
 def comando_eliminacion_de_reservaciones(asientos):
     limpiar_pantalla()
     imprimir_encabezado("Eliminación de Reservaciones")
     imprimir_asientos(asientos)
     esperar_continuar()
+
 
 def comando_mapa_de_ocupacion(asientos):
     limpiar_pantalla()

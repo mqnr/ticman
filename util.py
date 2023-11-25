@@ -54,22 +54,26 @@ def tic_entrada(s=None, inmediato=True, imprimir=False):
 
 def entrada_ciclo(
     funcion_entrada=input,
-    validador=lambda x: True,
+    validador=lambda _: True,
     transformador=lambda x: x,
-    en_invalido=lambda x: None,
+    en_invalido=lambda _: None,
     excepcion_manejo=Exception,
-    en_error=lambda x: None,
+    en_error=lambda _: None,
 ):
     """
     Un bucle generalizado para la validación de entradas de usuario.
 
     Parámetros:
     funcion_entrada (function): Una función para obtener la entrada del usuario.
-    validador (function): Una función para validar la entrada. Debe devolver True si la entrada es válida.
-    transformador (function): Una función para transformar la entrada antes de la validación.
-    en_invalido (function): Una función para ejecutar cuando la entrada no es válida, recibe la entrada transformada.
+    validador (function): Una función para validar la entrada. Debe
+        devolver True si la entrada es válida.
+    transformador (function): Una función para transformar la entrada
+        antes de la validación.
+    en_invalido (function): Una función para ejecutar cuando la
+        entrada no es válida, recibe la entrada transformada.
     excepcion_manejo (Exception): Una excepción a manejar.
-    en_error (function): Una función a ejecutar cuando se captura una excepción, recibe el objeto de excepción.
+    en_error (function): Una función a ejecutar cuando se captura una
+        excepción, recibe el objeto de excepción.
 
     Devuelve:
     La entrada de usuario validada y posiblemente transformada.
@@ -95,11 +99,11 @@ def entrada_ciclo(
 
 def entrada_numero_ciclo(
     funcion_entrada=input,
-    validador=lambda x: True,
+    validador=lambda _: True,
     transformador=int,
-    en_invalido=lambda x: None,
+    en_invalido=lambda _: None,
     excepcion_manejo=ValueError,
-    en_error=lambda x: None,
+    en_error=lambda _: None,
 ):
     return entrada_ciclo(
         funcion_entrada=funcion_entrada,
@@ -112,7 +116,7 @@ def entrada_numero_ciclo(
 
 
 def iee_ciclo(mensaje):
-    def f(x):
+    def f(_):
         imprimir_error_esperar(mensaje)
 
     return f
@@ -127,7 +131,7 @@ def ticeni_ciclo(mensaje):
 
 def tic_entrada_ciclo(
     entrada_texto="Ingresar un valor.",
-    validador=lambda x: True,
+    validador=lambda _: True,
     transformador=lambda x: x,
     en_invalido="Valor inválido.",
     excepcion_manejo=Exception,
@@ -148,7 +152,7 @@ def tic_entrada_ciclo(
 
 def tic_entrada_numero_ciclo_inmediato(
     entrada_texto="Ingresar un número.",
-    validador=lambda x: True,
+    validador=lambda _: True,
     transformador=int,
     en_invalido="Número inválido.",
     excepcion_manejo=ValueError,
@@ -169,7 +173,7 @@ def tic_entrada_numero_ciclo_inmediato(
 
 def tic_entrada_numero_ciclo(
     entrada_texto="Ingresar un número.",
-    validador=lambda x: True,
+    validador=lambda _: True,
     transformador=int,
     en_invalido="Número inválido.",
     excepcion_manejo=ValueError,
