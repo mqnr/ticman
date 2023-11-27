@@ -95,7 +95,6 @@ def comando_registro_de_reservaciones(asientos):
         destino_codigo=destino,
     )
 
-    # TODO: transformador que sanitiza el input
     confirmar = tic_entrada_ciclo(
         entrada_texto="¿Se confirma el registro de la reservación, (S/N)? ",
         validador=lambda x: es_respuesta(x),
