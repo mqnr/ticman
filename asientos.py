@@ -203,14 +203,6 @@ def imprimir_asientos_lista(asientos):
             if len(costo_cad) > len(max_costo):
                 max_costo = costo_cad
 
-    # tic_imprimir("Transportes Intergalácticos de Cajeme, S.A.\n")
-    # tic_imprimir("Reporte de reservaciones")
-    # tic_imprimir(
-    #     "────────────────────────────────────────────────────────────────────────────────"
-    # )
-    # tic_imprimir(
-    #     "No. del[10]Nombre[10]Identificación[10]Destino[10]Clase del[10]Ubicación[10]Costo"
-    # )
     nodel = len("No. del")
     lgt_mn = len(max_nombre)
     lgt_mi = len(max_identificacion)
