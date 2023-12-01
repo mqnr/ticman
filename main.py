@@ -32,8 +32,7 @@ def menu_principal():
             comandos.comando_modificacion_de_reservaciones(asientos)
             pass
         elif opcion == "4":
-            # manejar opción 4
-            pass
+            comandos.comando_submenu_consulta_de_reservaciones(asientos)
         elif opcion == "5":
             comandos.comando_mapa_de_ocupacion(asientos)
         elif opcion == "6":

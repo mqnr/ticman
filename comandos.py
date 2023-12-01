@@ -207,6 +207,108 @@ def comando_modificacion_de_reservaciones(asientos):
         return comando_modificacion_de_reservaciones(asientos)
 
 
+def comando_submenu_consulta_de_reservaciones(asientos):
+    limpiar_pantalla()
+    imprimir_encabezado("Submenú Consulta de Reservaciones")
+
+    tic_imprimir("(1) Consulta de Reservaciones por Nombre del Pasajero")
+    tic_imprimir("(2) Consulta de Reservaciones por Número del Asiento")
+    tic_imprimir("(3) Regresar al Menú Principal")
+
+    opcion = tic_entrada_numero_ciclo_inmediato(
+        entrada_texto="--- Presiona uno de los números entre paréntesis --- ",
+        validador=lambda x: x in range(1, 4),
+        en_invalido="Opción inválida.",
+    )
+
+    if opcion == 1:
+        return subcomando_submenu_consulta_de_reservaciones_pasajero(asientos)
+    elif opcion == 2:
+        return subcomando_submenu_consulta_de_reservaciones_asiento(asientos)
+
+
+def subcomando_submenu_consulta_de_reservaciones_pasajero(asientos):
+    limpiar_pantalla()
+    imprimir_encabezado("Consulta de Reservaciones por Número del Asiento")
+
+    nombre = tic_entrada_ciclo(
+        entrada_texto=(
+            'Ingresar el nombre de la persona para esta reservación ("fin" para regresar al menú anterior): '
+        ),
+        validador=es_alfabetico,
+        en_invalido="Nombre del pasajero inválido.",
+    ).lower()
+
+    if nombre == "fin":
+        return comando_submenu_consulta_de_reservaciones(asientos)
+
+    encontrado = None
+    for _, asiento in asientos:
+        pasajero = mapa.obtener(asiento, "pasajero")
+        if pasajero is None:
+            continue
+
+        pnombre = mapa.obtener(pasajero, "nombre")
+        # si nuestras invariantes son correctas, pnombre nunca debería
+        # ser None, pero incluir este chequeo hace feliz a los
+        # comprobadores de tipos
+        if pnombre is None:
+            continue
+        pnombre = pnombre.lower()
+
+        if pnombre == nombre:
+            encontrado = asiento
+            break
+
+    if not encontrado:
+        imprimir_error_esperar("Pasajero no registrado.")
+
+        if pedir_respuesta(
+            "¿Se desea continuar con la Consulta de Reservaciones por Nombre del Pasajero, (S/N)? "
+        ):
+            return subcomando_submenu_consulta_de_reservaciones_pasajero(asientos)
+        return comando_submenu_consulta_de_reservaciones(asientos)
+
+    imprimir_pasajero_por_asiento(encontrado)
+
+    if pedir_respuesta(
+        "¿Se desea continuar con la Consulta de Reservaciones por Nombre del Pasajero, (S/N)? "
+    ):
+        return subcomando_submenu_consulta_de_reservaciones_pasajero(asientos)
+    return comando_submenu_consulta_de_reservaciones(asientos)
+
+
+def subcomando_submenu_consulta_de_reservaciones_asiento(asientos):
+    limpiar_pantalla()
+    imprimir_encabezado("Consulta de Reservaciones por Número del Asiento")
+    imprimir_asientos(asientos)
+
+    elegido = pedir_asiento(
+        "Elige el asiento a consultar (0 para volver al menú principal): "
+    )
+    if elegido == 0:
+        return comando_submenu_consulta_de_reservaciones(asientos)
+
+    asiento = mapa.obtener(asientos, elegido)
+
+    if not asiento_esta_ocupado(asiento):
+        imprimir_error_esperar("Número del asiento no está ocupado.")
+
+        if pedir_respuesta(
+            "¿Se desea continuar con la Consulta de Reservaciones por Número del Asiento, (S/N)? "
+        ):
+            return subcomando_submenu_consulta_de_reservaciones_asiento(asientos)
+        return comando_submenu_consulta_de_reservaciones(asientos)
+
+    imprimir_pasajero_por_asiento(asiento)
+
+    if pedir_respuesta(
+        "¿Se desea continuar con la Consulta de Reservaciones por Número del Asiento, (S/N)? "
+    ):
+        return subcomando_submenu_consulta_de_reservaciones_asiento(asientos)
+    return comando_submenu_consulta_de_reservaciones(asientos)
+
+
 def comando_mapa_de_ocupacion(asientos):
     limpiar_pantalla()
     imprimir_encabezado("Mapa de Ocupación")
