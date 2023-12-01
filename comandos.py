@@ -9,6 +9,7 @@ from asientos import (
     imprimir_pasajero_por_datos,
 )
 from util import (
+    es_alfabetico,
     esperar_continuar,
     imprimir_encabezado,
     imprimir_error_esperar,
@@ -44,12 +45,6 @@ def comando_registro_de_reservaciones(asientos):
         ):
             return comando_registro_de_reservaciones(asientos)
         return
-
-    def es_alfabetico(s: str):
-        for car in s:
-            if car.isalpha():
-                return True
-        return False
 
     nombre = tic_entrada_ciclo(
         entrada_texto="Ingresar el nombre de la persona para esta reservación: ",

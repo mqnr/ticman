@@ -274,3 +274,10 @@ def es_respuesta(s):
     :returns: booleano confirmando si es una respuesta
     """
     return es_afirmativo(s) or es_negativo(s)
+
+
+def es_alfabetico(s: str):
+    for car in s:
+        if car.isalpha():
+            return True
+    return False
