@@ -3,9 +3,11 @@ import mapa
 from asientos import (
     OCUPADO,
     asiento_actualizar,
+    asiento_desocupar,
     asiento_esta_ocupado,
     imprimir_asientos,
     imprimir_asientos_con_encabezado,
+    imprimir_pasajero_por_asiento,
     imprimir_pasajero_por_datos,
 )
 from util import (
@@ -13,6 +15,7 @@ from util import (
     esperar_continuar,
     imprimir_encabezado,
     imprimir_error_esperar,
+    imprimir_esperar,
     limpiar_pantalla,
     pedir_asiento,
     pedir_respuesta,
