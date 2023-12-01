@@ -222,8 +222,16 @@ def limpiar_pantalla():
         os.system("clear")
 
 
+def mensaje(s):
+    return f"*** {s}\n    Presionar <Enter> para continuar."
+
+
 def mensaje_error(s):
     return f"*** Error: {s}\n    Presionar <Enter> para continuar."
+
+
+def imprimir_esperar(s):
+    tic_entrada(mensaje(s))
 
 
 def imprimir_error_esperar(s):

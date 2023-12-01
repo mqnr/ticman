@@ -102,7 +102,30 @@ def comando_eliminacion_de_reservaciones(asientos):
     limpiar_pantalla()
     imprimir_encabezado("Eliminación de Reservaciones")
     imprimir_asientos(asientos)
-    esperar_continuar()
+
+    elegido = pedir_asiento("Elige el asiento para el cual eliminar la reservación: ")
+    if elegido == 0:
+        return
+
+    asiento = mapa.obtener(asientos, elegido)
+    if not asiento_esta_ocupado(asiento):
+        imprimir_esperar("Número del asiento no está ocupado.")
+
+        if pedir_respuesta(
+            "¿Se desea continuar con la Eliminación de Reservaciones, (S/N)? "
+        ):
+            return comando_eliminacion_de_reservaciones(asientos)
+        return
+
+    imprimir_pasajero_por_asiento(asiento)
+
+    if pedir_respuesta("¿Se confirma la eliminación de la reservación, (S/N)? "):
+        asiento_desocupar(asiento)
+
+    if pedir_respuesta(
+        "¿Se desea continuar con la Eliminación de Reservaciones, (S/N)? "
+    ):
+        return comando_eliminacion_de_reservaciones(asiento)
 
 
 def comando_mapa_de_ocupacion(asientos):

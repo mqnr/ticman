@@ -113,6 +113,24 @@ def imprimir_pasajero_por_datos(
     tic_imprimir(f"• Costo del boleto del pasajero: ${costo:,.2f}")
 
 
+def imprimir_pasajero_por_asiento(asiento):
+    pasajero = mapa.obtener(asiento, "pasajero")
+
+    def op(s):
+        return mapa.obtener(pasajero, s)
+
+    def oa(s):
+        return mapa.obtener(asiento, s)
+
+    tic_imprimir(f"• Nombre del pasajero: {op('nombre')}")
+    tic_imprimir(f"• Identificación del pasajero: {op('identificacion')}")
+    tic_imprimir(f"• Destino del pasajero: {oa('destino_largo')}")
+    tic_imprimir(f"• Clase del asiento: {oa('clase')}")
+    tic_imprimir(f"• Ubicación del asiento: {oa('ubicacion')}")
+    tic_imprimir(f"• Número del asiento: {oa('numero')}")
+    tic_imprimir(f"• Costo del boleto del pasajero: ${oa('costo'):,.2f}")
+
+
 def imprimir_asientos(asientos):
     def f(asiento):
         return (
