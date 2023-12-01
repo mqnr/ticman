@@ -52,7 +52,7 @@ def comando_registro_de_reservaciones(asientos):
     nombre = tic_entrada_ciclo(
         entrada_texto="Ingresar el nombre de la persona para esta reservación: ",
         validador=es_alfabetico,
-        en_invalido="Destino del pasajero inválido.",
+        en_invalido="Nombre del pasajero inválido.",
     )
 
     identificacion = tic_entrada(
@@ -161,7 +161,7 @@ def comando_modificacion_de_reservaciones(asientos):
     nombre = tic_entrada_ciclo(
         entrada_texto="Ingresar el nombre de la persona para esta reservación: ",
         validador=es_alfabetico,
-        en_invalido="Destino del pasajero inválido.",
+        en_invalido="Nombre del pasajero inválido.",
     )
 
     identificacion = tic_entrada(
