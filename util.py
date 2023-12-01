@@ -224,11 +224,11 @@ def limpiar_pantalla():
 
 
 def mensaje(s):
-    return f"*** {s}\n    Presionar <Enter> para continuar."
+    return f"*** {s}\n    Presionar <Enter> para continuar. "
 
 
 def mensaje_error(s):
-    return f"*** Error: {s}\n    Presionar <Enter> para continuar."
+    return f"*** Error: {s}\n    Presionar <Enter> para continuar. "
 
 
 def imprimir_esperar(s):
@@ -240,7 +240,7 @@ def imprimir_error_esperar(s):
 
 
 def esperar_continuar():
-    tic_entrada("Presionar <ENTER> para continuar.")
+    tic_entrada("Presionar <ENTER> para continuar. ")
 
 
 def es_afirmativo(s):
