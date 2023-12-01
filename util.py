@@ -203,11 +203,12 @@ def pedir_asiento(
 
 
 def pedir_respuesta(texto="¿Se desea continuar, (S/N)? "):
-    return tic_entrada_ciclo(
+    respuesta = tic_entrada_ciclo(
         entrada_texto=texto,
         validador=lambda x: es_respuesta(x),
         en_invalido="Respuesta inválida.",
     )
+    return es_afirmativo(respuesta)
 
 
 def imprimir_encabezado(s):
