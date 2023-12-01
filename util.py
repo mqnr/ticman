@@ -278,6 +278,6 @@ def es_respuesta(s):
 
 def es_alfabetico(s: str):
     for car in s:
-        if car.isalpha():
-            return True
-    return False
+        if not car.isalpha():
+            return False
+    return True
