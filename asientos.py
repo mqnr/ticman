@@ -103,14 +103,14 @@ def asiento_desocupar(asiento):
 def imprimir_pasajero_por_datos(
     asiento, nombre_pasajero, identificacion_pasajero, destino_codigo
 ):
-    tic_imprimir(f"• Nombre del pasajero: {nombre_pasajero}")
-    tic_imprimir(f"• Identificación del pasajero: {identificacion_pasajero}")
-    tic_imprimir(f"• Destino del pasajero: {destinos.codigo_a_largo(destino_codigo)}")
-    tic_imprimir(f"• Clase del asiento: {mapa.obtener(asiento, 'clase')}")
-    tic_imprimir(f"• Ubicación del asiento: {mapa.obtener(asiento, 'ubicacion')}")
-    tic_imprimir(f"• Número del asiento: {mapa.obtener(asiento, 'numero')}")
+    print(f"• Nombre del pasajero: {nombre_pasajero}")
+    print(f"• Identificación del pasajero: {identificacion_pasajero}")
+    print(f"• Destino del pasajero: {destinos.codigo_a_largo(destino_codigo)}")
+    print(f"• Clase del asiento: {mapa.obtener(asiento, 'clase')}")
+    print(f"• Ubicación del asiento: {mapa.obtener(asiento, 'ubicacion')}")
+    print(f"• Número del asiento: {mapa.obtener(asiento, 'numero')}")
     costo = calcular_tarifa(mapa.obtener(asiento, "clase"), destino_codigo)
-    tic_imprimir(f"• Costo del boleto del pasajero: ${costo:,.2f}")
+    print(f"• Costo del boleto del pasajero: ${costo:,.2f}")
 
 
 def imprimir_pasajero_por_asiento(asiento):
@@ -122,13 +122,13 @@ def imprimir_pasajero_por_asiento(asiento):
     def oa(s):
         return mapa.obtener(asiento, s)
 
-    tic_imprimir(f"• Nombre del pasajero: {op('nombre')}")
-    tic_imprimir(f"• Identificación del pasajero: {op('id')}")
-    tic_imprimir(f"• Destino del pasajero: {oa('destino_largo')}")
-    tic_imprimir(f"• Clase del asiento: {oa('clase')}")
-    tic_imprimir(f"• Ubicación del asiento: {oa('ubicacion')}")
-    tic_imprimir(f"• Número del asiento: {oa('numero')}")
-    tic_imprimir(f"• Costo del boleto del pasajero: ${oa('costo'):,.2f}")
+    print(f"• Nombre del pasajero: {op('nombre')}")
+    print(f"• Identificación del pasajero: {op('id')}")
+    print(f"• Destino del pasajero: {oa('destino_largo')}")
+    print(f"• Clase del asiento: {oa('clase')}")
+    print(f"• Ubicación del asiento: {oa('ubicacion')}")
+    print(f"• Número del asiento: {oa('numero')}")
+    print(f"• Costo del boleto del pasajero: ${oa('costo'):,.2f}")
 
 
 def imprimir_asientos(asientos):
@@ -159,7 +159,7 @@ def imprimir_asientos(asientos):
 
 
 def imprimir_asientos_con_encabezado(asientos):
-    tic_imprimir("Mapa de Ocupación:")
+    print("Mapa de Ocupación:")
     imprimir_asientos(asientos)
 
 
@@ -211,14 +211,14 @@ def imprimir_asientos_lista(asientos):
     encabezado = f"{'No. del':^{nodel}} {'':^{lgt_mn}} {'':^{lgt_mi}} {'':^{lgt_d}} {'Clase del':^{lgt_clase}} {'Ubicación':^{lgt_ubicacion}} {'Costo':^{lgt_c}}"
     lgt_encabezado = len(encabezado)
 
-    tic_imprimir(f"{'Transportes Intergalácticos de Cajeme, S.A.':^{lgt_encabezado}}\n")
-    tic_imprimir(f"{'Reporte de Reservaciones':^{lgt_encabezado}}")
-    tic_imprimir("─" * len(encabezado))
-    tic_imprimir(encabezado)
-    tic_imprimir(
+    print(f"{'Transportes Intergalácticos de Cajeme, S.A.':^{lgt_encabezado}}\n")
+    print(f"{'Reporte de Reservaciones':^{lgt_encabezado}}")
+    print("─" * len(encabezado))
+    print(encabezado)
+    print(
         f"{'Asiento':^{nodel}} {'Nombre':^{lgt_mn}} {'Identificación':^{lgt_mi}} {'Destino':^{lgt_d}} {'Asiento':^{lgt_clase}} {'del Asiento':^{lgt_ubicacion}} {'del Boleto':^{lgt_c}}"
     )
-    tic_imprimir("─" * len(encabezado))
+    print("─" * len(encabezado))
     for n, asiento in asientos:
         pasajero = mapa.obtener(asiento, "pasajero")
 

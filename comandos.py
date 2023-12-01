@@ -24,7 +24,6 @@ from util import (
     tic_entrada,
     tic_entrada_ciclo,
     tic_entrada_numero_ciclo_inmediato,
-    tic_imprimir,
 )
 
 
@@ -74,10 +73,10 @@ def comando_registro_de_reservaciones(asientos):
         "Ingresa la identificación del pasajero: ", inmediato=False
     )
 
-    tic_imprimir("Posibles destinos:")
-    tic_imprimir("(1) Luna (LUN)")
-    tic_imprimir("(2) Europa (EUR)")
-    tic_imprimir("(3) Titán (TAN)")
+    print("Posibles destinos:")
+    print("(1) Luna (LUN)")
+    print("(2) Europa (EUR)")
+    print("(3) Titán (TAN)")
 
     opcion = tic_entrada_numero_ciclo_inmediato(
         entrada_texto="--- Presiona uno de los números entre paréntesis --- ",
@@ -183,10 +182,10 @@ def comando_modificacion_de_reservaciones(asientos):
         "Ingresa la identificación del pasajero: ", inmediato=False
     )
 
-    tic_imprimir("Posibles destinos:")
-    tic_imprimir("(1) Luna (LUN)")
-    tic_imprimir("(2) Europa (EUR)")
-    tic_imprimir("(3) Titán (TAN)")
+    print("Posibles destinos:")
+    print("(1) Luna (LUN)")
+    print("(2) Europa (EUR)")
+    print("(3) Titán (TAN)")
 
     opcion = tic_entrada_numero_ciclo_inmediato(
         entrada_texto="--- Presiona uno de los números entre paréntesis --- ",
@@ -226,9 +225,9 @@ def comando_submenu_consulta_de_reservaciones(asientos):
     limpiar_pantalla()
     imprimir_encabezado("Submenú Consulta de Reservaciones")
 
-    tic_imprimir("(1) Consulta de Reservaciones por Nombre del Pasajero")
-    tic_imprimir("(2) Consulta de Reservaciones por Número del Asiento")
-    tic_imprimir("(3) Regresar al Menú Principal")
+    print("(1) Consulta de Reservaciones por Nombre del Pasajero")
+    print("(2) Consulta de Reservaciones por Número del Asiento")
+    print("(3) Regresar al Menú Principal")
 
     opcion = tic_entrada_numero_ciclo_inmediato(
         entrada_texto="--- Presiona uno de los números entre paréntesis --- ",
@@ -343,6 +342,6 @@ def comando_reporte_de_reservaciones(asientos):
             ocupados += 1
 
     desocupados = 28 - ocupados
-    tic_imprimir(f"Total de asientos ocupados: {ocupados:>5}")
-    tic_imprimir(f"Total de asientos desocupados: {desocupados:>2}")
+    print(f"Total de asientos ocupados: {ocupados:>5}")
+    print(f"Total de asientos desocupados: {desocupados:>2}")
     esperar_continuar()

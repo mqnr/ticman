@@ -1,7 +1,7 @@
 import comandos
 import mapa
 from asientos import asiento_vacio
-from util import imprimir_error_esperar, tic_entrada, tic_imprimir, limpiar_pantalla
+from util import imprimir_error_esperar, tic_entrada, limpiar_pantalla
 
 
 def menu_principal():
@@ -11,14 +11,14 @@ def menu_principal():
 
     while True:
         limpiar_pantalla()
-        tic_imprimir("Elegir una de las siguientes opciones:")
-        tic_imprimir("(1) Registro de Reservaciones")
-        tic_imprimir("(2) Eliminación de Reservaciones")
-        tic_imprimir("(3) Modificación de Reservaciones")
-        tic_imprimir("(4) Submenú Consulta de Reservaciones")
-        tic_imprimir("(5) Mapa de Ocupación")
-        tic_imprimir("(6) Reporte de Reservaciones")
-        tic_imprimir("(7) Terminar")
+        print("Elegir una de las siguientes opciones:")
+        print("(1) Registro de Reservaciones")
+        print("(2) Eliminación de Reservaciones")
+        print("(3) Modificación de Reservaciones")
+        print("(4) Submenú Consulta de Reservaciones")
+        print("(5) Mapa de Ocupación")
+        print("(6) Reporte de Reservaciones")
+        print("(7) Terminar")
 
         opcion = tic_entrada("--- Presionar una de las teclas entre paréntesis --- ")
 
