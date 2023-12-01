@@ -101,7 +101,9 @@ def comando_eliminacion_de_reservaciones(asientos):
     imprimir_encabezado("Eliminación de Reservaciones")
     imprimir_asientos(asientos)
 
-    elegido = pedir_asiento("Elige el asiento para el cual eliminar la reservación: ")
+    elegido = pedir_asiento(
+        "Elige el asiento para el cual eliminar la reservación (0 para regresar al menú principal): "
+    )
     if elegido == 0:
         return
 
