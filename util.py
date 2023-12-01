@@ -192,6 +192,24 @@ def tic_entrada_numero_ciclo(
     )
 
 
+def pedir_asiento(
+    texto="Elige el asiento (0 para volver al menú principal): ",
+):
+    return tic_entrada_numero_ciclo(
+        entrada_texto=texto,
+        validador=lambda x: x in range(29),
+        en_invalido="Número del asiento inválido.",
+    )
+
+
+def pedir_respuesta(texto="¿Se desea continuar, (S/N)? "):
+    return tic_entrada_ciclo(
+        entrada_texto=texto,
+        validador=lambda x: es_respuesta(x),
+        en_invalido="Respuesta inválida.",
+    )
+
+
 def imprimir_encabezado(s):
     tic_imprimir(s)
     tic_imprimir("=" * len(s) + "\n")

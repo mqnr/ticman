@@ -9,15 +9,14 @@ from asientos import (
     imprimir_pasajero_por_datos,
 )
 from util import (
-    es_respuesta,
-    es_afirmativo,
     esperar_continuar,
     imprimir_encabezado,
     imprimir_error_esperar,
     limpiar_pantalla,
+    pedir_asiento,
+    pedir_respuesta,
     tic_entrada,
     tic_entrada_ciclo,
-    tic_entrada_numero_ciclo,
     tic_entrada_numero_ciclo_inmediato,
     tic_imprimir,
 )
@@ -28,10 +27,8 @@ def comando_registro_de_reservaciones(asientos):
     imprimir_encabezado("Registro de Reservaciones")
     imprimir_asientos_con_encabezado(asientos)
 
-    elegido = tic_entrada_numero_ciclo(
-        entrada_texto="Elige el asiento a reservar (0 para volver al menú principal): ",
-        validador=lambda x: x in range(29),
-        en_invalido="Número del asiento inválido.",
+    elegido = pedir_asiento(
+        "Elige el asiento a reservar (0 para volver al menú principal): "
     )
 
     if elegido == 0:
@@ -42,15 +39,9 @@ def comando_registro_de_reservaciones(asientos):
     if asiento_esta_ocupado(asiento):
         imprimir_error_esperar("Número del asiento está ocupado.")
 
-        respuesta = tic_entrada_ciclo(
-            entrada_texto=(
-                "¿Se desea continuar con el Registro de Reservaciones, (S/N)? "
-            ),
-            validador=lambda x: es_respuesta(x),
-            en_invalido="Respuesta inválida.",
-        )
-
-        if es_afirmativo(respuesta):
+        if pedir_respuesta(
+            "¿Se desea continuar con el Registro de Reservaciones, (S/N)? "
+        ):
             return comando_registro_de_reservaciones(asientos)
         return
 
@@ -95,13 +86,7 @@ def comando_registro_de_reservaciones(asientos):
         destino_codigo=destino,
     )
 
-    confirmar = tic_entrada_ciclo(
-        entrada_texto="¿Se confirma el registro de la reservación, (S/N)? ",
-        validador=lambda x: es_respuesta(x),
-        en_invalido="Respuesta inválida.",
-    )
-
-    if es_afirmativo(confirmar):
+    if pedir_respuesta("¿Se confirma el registro de la reservación, (S/N)? "):
         asiento_actualizar(
             asiento,
             estado=OCUPADO,
@@ -109,13 +94,7 @@ def comando_registro_de_reservaciones(asientos):
             pasajero=mapa.nuevo(("nombre", nombre), ("id", identificacion)),
         )
 
-    continuar = tic_entrada_ciclo(
-        entrada_texto="¿Se desea continuar con el Registro de Reservaciones, (S/N)? ",
-        validador=lambda x: es_respuesta(x),
-        en_invalido="Respuesta inválida.",
-    )
-
-    if es_afirmativo(continuar):
+    if pedir_respuesta("¿Se desea continuar con el Registro de Reservaciones, (S/N)? "):
         return comando_registro_de_reservaciones(asientos)
 
 
