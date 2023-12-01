@@ -12,6 +12,7 @@ from asientos import (
     imprimir_pasajero_por_datos,
 )
 from util import (
+    entrada_ciclo,
     es_alfabetico,
     esperar_continuar,
     imprimir_encabezado,
@@ -50,10 +51,23 @@ def comando_registro_de_reservaciones(asientos):
             return comando_registro_de_reservaciones(asientos)
         return
 
-    nombre = tic_entrada_ciclo(
-        entrada_texto="Ingresar el nombre de la persona para esta reservación: ",
-        validador=es_alfabetico,
-        en_invalido="Nombre del pasajero inválido.",
+    def es_fin(s):
+        return s.lower() == "fin"
+
+    # hay que usar entrada_ciclo en vez de una función más abstraída
+    # (como tic_entrada_ciclo) para poder imprimir diferentes mensajes
+    # dependiendo de cuál fue la condición que se violó
+    nombre = entrada_ciclo(
+        funcion_entrada=lambda: tic_entrada(
+            "Ingresar el nombre de la persona para esta reservación: ", inmediato=False
+        ),
+        validador=lambda s: es_alfabetico(s) and not es_fin(s),
+        en_invalido=lambda s: imprimir_error_esperar(
+            'El pasajero no se puede llamar "fin".'
+            if es_fin(s)
+            else "Nombre del pasajero inválido."
+        ),
+        en_error=lambda _: imprimir_error_esperar("Nombre del pasajero inválido."),
     )
 
     identificacion = tic_entrada(
