@@ -123,7 +123,7 @@ def imprimir_pasajero_por_asiento(asiento):
         return mapa.obtener(asiento, s)
 
     tic_imprimir(f"• Nombre del pasajero: {op('nombre')}")
-    tic_imprimir(f"• Identificación del pasajero: {op('identificacion')}")
+    tic_imprimir(f"• Identificación del pasajero: {op('id')}")
     tic_imprimir(f"• Destino del pasajero: {oa('destino_largo')}")
     tic_imprimir(f"• Clase del asiento: {oa('clase')}")
     tic_imprimir(f"• Ubicación del asiento: {oa('ubicacion')}")
