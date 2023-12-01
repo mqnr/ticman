@@ -330,5 +330,5 @@ def comando_reporte_de_reservaciones(asientos):
 
     desocupados = 28 - ocupados
     tic_imprimir(f"Total de asientos ocupados: {ocupados:>5}")
-    tic_imprimir(f"Total de asientos desocupados: {desocupados:02}")
+    tic_imprimir(f"Total de asientos desocupados: {desocupados:>2}")
     esperar_continuar()
