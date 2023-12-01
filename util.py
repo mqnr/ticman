@@ -277,8 +277,5 @@ def es_respuesta(s):
     return es_afirmativo(s) or es_negativo(s)
 
 
-def es_alfabetico(s: str):
-    for car in s:
-        if not car.isalpha():
-            return False
-    return True
+def es_alfabetico(s):
+    return all(car.isalpha() or car.isspace() for car in s)
