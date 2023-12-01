@@ -140,7 +140,7 @@ def comando_eliminacion_de_reservaciones(asientos):
     if pedir_respuesta(
         "¿Se desea continuar con la Eliminación de Reservaciones, (S/N)? "
     ):
-        return comando_eliminacion_de_reservaciones(asiento)
+        return comando_eliminacion_de_reservaciones(asientos)
 
 
 def comando_modificacion_de_reservaciones(asientos):
