@@ -29,7 +29,7 @@ def menu_principal():
             comandos.comando_eliminacion_de_reservaciones(asientos)
             pass
         elif opcion == "3":
-            # manejar opción 3
+            comandos.comando_modificacion_de_reservaciones(asientos)
             pass
         elif opcion == "4":
             # manejar opción 4
