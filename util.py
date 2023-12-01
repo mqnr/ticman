@@ -21,7 +21,7 @@ def tic_imprimir(plantilla, **kwargs):
 
 def tic_entrada(s=None, inmediato=True, imprimir=False):
     if s is not None:
-        tic_imprimir(s, end="", flush=True)
+        print(s, end="", flush=True)
     if not inmediato:
         return input()
 
@@ -212,8 +212,8 @@ def pedir_respuesta(texto="¿Se desea continuar, (S/N)? "):
 
 
 def imprimir_encabezado(s):
-    tic_imprimir(s)
-    tic_imprimir("=" * len(s) + "\n")
+    print(s)
+    print("=" * len(s) + "\n")
 
 
 def limpiar_pantalla():
