@@ -161,3 +161,102 @@ def imprimir_asientos(asientos):
 def imprimir_asientos_con_encabezado(asientos):
     tic_imprimir("Mapa de Ocupación:")
     imprimir_asientos(asientos)
+
+
+def imprimir_asientos_lista(asientos):
+    nombre_predeterminado = "*** Disponible ***"
+    max_nombre = nombre_predeterminado
+
+    max_identificacion = "Identificación"
+
+    max_destino = "Destino"
+
+    lgt_ubicacion = 11  # longitud de la cadena "del Asiento"
+
+    lgt_clase = 9  # longitud de la cadena "Clase del"
+
+    max_costo = "del Boleto"
+
+    for _, asiento in asientos:
+        pasajero = mapa.obtener(asiento, "pasajero")
+        if pasajero is None:
+            continue
+
+        nombre = mapa.obtener(pasajero, "nombre")
+        if nombre is not None:
+            if len(nombre) > len(max_nombre):
+                max_nombre = nombre
+
+        identificacion = mapa.obtener(pasajero, "id")
+        if identificacion is not None:
+            if len(identificacion) > len(max_identificacion):
+                max_identificacion = identificacion
+
+        destino = mapa.obtener(asiento, "destino_largo")
+        if destino is not None:
+            if len(destino) > len(max_destino):
+                max_destino = destino
+
+        costo = mapa.obtener(asiento, "costo")
+        if costo is not None and costo != -1:
+            costo_cad = f"{costo:,.2f}"
+            if len(costo_cad) > len(max_costo):
+                max_costo = costo_cad
+
+    # tic_imprimir("Transportes Intergalácticos de Cajeme, S.A.\n")
+    # tic_imprimir("Reporte de reservaciones")
+    # tic_imprimir(
+    #     "────────────────────────────────────────────────────────────────────────────────"
+    # )
+    # tic_imprimir(
+    #     "No. del[10]Nombre[10]Identificación[10]Destino[10]Clase del[10]Ubicación[10]Costo"
+    # )
+    nodel = len("No. del")
+    lgt_mn = len(max_nombre)
+    lgt_mi = len(max_identificacion)
+    lgt_d = len(max_destino)
+    lgt_c = len(max_costo)
+    encabezado = f"{'No. del':^{nodel}} {'':^{lgt_mn}} {'':^{lgt_mi}} {'':^{lgt_d}} {'Clase del':^{lgt_clase}} {'Ubicación':^{lgt_ubicacion}} {'Costo':^{lgt_c}}"
+    lgt_encabezado = len(encabezado)
+
+    tic_imprimir(f"{'Transportes Intergalácticos de Cajeme, S.A.':^{lgt_encabezado}}\n")
+    tic_imprimir(f"{'Reporte de Reservaciones':^{lgt_encabezado}}")
+    tic_imprimir("─" * len(encabezado))
+    tic_imprimir(encabezado)
+    tic_imprimir(
+        f"{'Asiento':^{nodel}} {'Nombre':^{lgt_mn}} {'Identificación':^{lgt_mi}} {'Destino':^{lgt_d}} {'Asiento':^{lgt_clase}} {'del Asiento':^{lgt_ubicacion}} {'del Boleto':^{lgt_c}}"
+    )
+    tic_imprimir("─" * len(encabezado))
+    for n, asiento in asientos:
+        pasajero = mapa.obtener(asiento, "pasajero")
+
+        def op(s):
+            if pasajero is None:
+                if s == "nombre":
+                    return "*** Disponible ***"
+                return ""
+
+            dev = mapa.obtener(pasajero, s)
+            if dev is None:
+                return ""
+            return dev
+
+        def oa(s):
+            return mapa.obtener(asiento, s)
+
+        def i(s):
+            print(s, end=" ")
+
+        i(f"{n:^{nodel}}")
+        i(f"{op('nombre'):<{lgt_mn}}")
+        i(f"{op('id'):<{lgt_mi}}")
+        destino = oa("destino_largo")
+        d = destino if oa("destino_codigo") != destinos.TIC else ""
+        i(f"{d:^{lgt_d}}")
+        i(f"{oa('clase'):^{lgt_clase}}")
+        i(f"{oa('ubicacion'):^{lgt_ubicacion}}")
+        costo = mapa.obtener(asiento, "costo")
+        cc = f"{costo:,.2f}" if costo is not None and costo != -1 else ""
+        i(f"{cc:>{lgt_c}}")
+
+        print()

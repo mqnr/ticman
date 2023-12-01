@@ -36,8 +36,7 @@ def menu_principal():
         elif opcion == "5":
             comandos.comando_mapa_de_ocupacion(asientos)
         elif opcion == "6":
-            # manejar opción 6
-            pass
+            comandos.comando_reporte_de_reservaciones(asientos)
         elif opcion == "7":
             break
         else:

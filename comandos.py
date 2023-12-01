@@ -7,6 +7,7 @@ from asientos import (
     asiento_esta_ocupado,
     imprimir_asientos,
     imprimir_asientos_con_encabezado,
+    imprimir_asientos_lista,
     imprimir_pasajero_por_asiento,
     imprimir_pasajero_por_datos,
 )
@@ -313,4 +314,21 @@ def comando_mapa_de_ocupacion(asientos):
     limpiar_pantalla()
     imprimir_encabezado("Mapa de Ocupación")
     imprimir_asientos(asientos)
+    esperar_continuar()
+
+
+def comando_reporte_de_reservaciones(asientos):
+    limpiar_pantalla()
+    imprimir_encabezado("Reporte de Reservaciones")
+    imprimir_asientos_lista(asientos)
+    print()
+
+    ocupados = 0
+    for _, asiento in asientos:
+        if asiento_esta_ocupado(asiento):
+            ocupados += 1
+
+    desocupados = 28 - ocupados
+    tic_imprimir(f"Total de asientos ocupados: {ocupados:>5}")
+    tic_imprimir(f"Total de asientos desocupados: {desocupados:02}")
     esperar_continuar()
