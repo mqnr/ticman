@@ -1,3 +1,4 @@
+import color
 import comandos
 import mapa
 from asientos import asiento_vacio
@@ -11,14 +12,13 @@ def menu_principal():
 
     while True:
         limpiar_pantalla()
-        print("Elegir una de las siguientes opciones:")
-        print("(1) Registro de Reservaciones")
-        print("(2) Eliminación de Reservaciones")
-        print("(3) Modificación de Reservaciones")
-        print("(4) Submenú Consulta de Reservaciones")
-        print("(5) Mapa de Ocupación")
-        print("(6) Reporte de Reservaciones")
-        print("(7) Terminar")
+        print(f"({color.CABECERA}1{color.FIN}) Registro de Reservaciones")
+        print(f"({color.CABECERA}2{color.FIN}) Eliminación de Reservaciones")
+        print(f"({color.CABECERA}3{color.FIN}) Modificación de Reservaciones")
+        print(f"({color.CABECERA}4{color.FIN}) Submenú Consulta de Reservaciones")
+        print(f"({color.CABECERA}5{color.FIN}) Mapa de Ocupación")
+        print(f"({color.CABECERA}6{color.FIN}) Reporte de Reservaciones")
+        print(f"({color.CABECERA}7{color.FIN}) Terminar")
 
         opcion = tic_entrada("--- Presionar una de las teclas entre paréntesis --- ")
 

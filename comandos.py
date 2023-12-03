@@ -1,3 +1,4 @@
+import color
 import destinos
 import mapa
 from asientos import (
@@ -33,7 +34,7 @@ def comando_registro_de_reservaciones(asientos):
     imprimir_asientos_con_encabezado(asientos)
 
     elegido = pedir_asiento(
-        "Elige el asiento a reservar (0 para volver al menú principal): "
+        f"Elige el asiento a reservar ({color.CABECERA}0{color.FIN} para volver al menú principal): "
     )
 
     if elegido == 0:
@@ -45,7 +46,7 @@ def comando_registro_de_reservaciones(asientos):
         imprimir_error_esperar("Número del asiento está ocupado.")
 
         if pedir_respuesta(
-            "¿Se desea continuar con el Registro de Reservaciones, (S/N)? "
+            f"¿Se desea continuar con el Registro de Reservaciones, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
         ):
             return comando_registro_de_reservaciones(asientos)
         return
@@ -74,9 +75,9 @@ def comando_registro_de_reservaciones(asientos):
     )
 
     print("Posibles destinos:")
-    print("(1) Luna (LUN)")
-    print("(2) Europa (EUR)")
-    print("(3) Titán (TAN)")
+    print(f"({color.CABECERA}1{color.FIN}) Luna ({color.NEGRITAS}LUN{color.FIN})")
+    print(f"({color.CABECERA}2{color.FIN}) Europa ({color.NEGRITAS}EUR{color.FIN})")
+    print(f"({color.CABECERA}3{color.FIN}) Titán ({color.NEGRITAS}TAN{color.FIN})")
 
     opcion = tic_entrada_numero_ciclo_inmediato(
         entrada_texto="--- Presiona uno de los números entre paréntesis --- ",
@@ -98,7 +99,9 @@ def comando_registro_de_reservaciones(asientos):
         destino_codigo=destino,
     )
 
-    if pedir_respuesta("¿Se confirma el registro de la reservación, (S/N)? "):
+    if pedir_respuesta(
+        f"¿Se confirma el registro de la reservación, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
+    ):
         asiento_actualizar(
             asiento,
             estado=OCUPADO,
@@ -106,7 +109,9 @@ def comando_registro_de_reservaciones(asientos):
             pasajero=mapa.nuevo(("nombre", nombre), ("id", identificacion)),
         )
 
-    if pedir_respuesta("¿Se desea continuar con el Registro de Reservaciones, (S/N)? "):
+    if pedir_respuesta(
+        f"¿Se desea continuar con el Registro de Reservaciones, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
+    ):
         return comando_registro_de_reservaciones(asientos)
 
 
@@ -116,7 +121,7 @@ def comando_eliminacion_de_reservaciones(asientos):
     imprimir_asientos(asientos)
 
     elegido = pedir_asiento(
-        "Elige el asiento para el cual eliminar la reservación (0 para regresar al menú principal): "
+        f"Elige el asiento para el cual eliminar la reservación ({color.CABECERA}0{color.FIN} para regresar al menú principal): "
     )
     if elegido == 0:
         return
@@ -126,18 +131,20 @@ def comando_eliminacion_de_reservaciones(asientos):
         imprimir_esperar("Número del asiento no está ocupado.")
 
         if pedir_respuesta(
-            "¿Se desea continuar con la Eliminación de Reservaciones, (S/N)? "
+            f"¿Se desea continuar con la Eliminación de Reservaciones, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
         ):
             return comando_eliminacion_de_reservaciones(asientos)
         return
 
     imprimir_pasajero_por_asiento(asiento)
 
-    if pedir_respuesta("¿Se confirma la eliminación de la reservación, (S/N)? "):
+    if pedir_respuesta(
+        f"¿Se confirma la eliminación de la reservación, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
+    ):
         asiento_desocupar(asiento)
 
     if pedir_respuesta(
-        "¿Se desea continuar con la Eliminación de Reservaciones, (S/N)? "
+        f"¿Se desea continuar con la Eliminación de Reservaciones, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
     ):
         return comando_eliminacion_de_reservaciones(asientos)
 
@@ -148,7 +155,7 @@ def comando_modificacion_de_reservaciones(asientos):
     imprimir_asientos(asientos)
 
     elegido = pedir_asiento(
-        "Elige el asiento a modificar (0 para volver al menú principal): "
+        f"Elige el asiento a modificar ({color.CABECERA}0{color.FIN} para volver al menú principal): "
     )
     if elegido == 0:
         return
@@ -158,16 +165,18 @@ def comando_modificacion_de_reservaciones(asientos):
         imprimir_error_esperar("Número del asiento no está ocupado.")
 
         if pedir_respuesta(
-            "¿Se desea continuar con la Modificación de Reservaciones, (S/N)? "
+            f"¿Se desea continuar con la Modificación de Reservaciones, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
         ):
             return comando_eliminacion_de_reservaciones(asientos)
         return
 
     imprimir_pasajero_por_asiento(asiento)
 
-    if not pedir_respuesta("¿Se confirma el ingreso de los datos a modificar, (S/N)? "):
+    if not pedir_respuesta(
+        f"¿Se confirma el ingreso de los datos a modificar, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
+    ):
         if pedir_respuesta(
-            "¿Se desea continuar con la Modificación de Reservaciones, (S/N)? "
+            f"¿Se desea continuar con la Modificación de Reservaciones, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
         ):
             return comando_modificacion_de_reservaciones(asientos)
         return
@@ -183,9 +192,9 @@ def comando_modificacion_de_reservaciones(asientos):
     )
 
     print("Posibles destinos:")
-    print("(1) Luna (LUN)")
-    print("(2) Europa (EUR)")
-    print("(3) Titán (TAN)")
+    print(f"({color.CABECERA}1{color.FIN}) Luna ({color.NEGRITAS}LUN{color.FIN})")
+    print(f"({color.CABECERA}2{color.FIN}) Europa ({color.NEGRITAS}EUR{color.FIN})")
+    print(f"({color.CABECERA}3{color.FIN}) Titán ({color.NEGRITAS}TAN{color.FIN})")
 
     opcion = tic_entrada_numero_ciclo_inmediato(
         entrada_texto="--- Presiona uno de los números entre paréntesis --- ",
@@ -207,7 +216,9 @@ def comando_modificacion_de_reservaciones(asientos):
         destino_codigo=destino,
     )
 
-    if pedir_respuesta("¿Se confirma la modificación de la reservación, (S/N)? "):
+    if pedir_respuesta(
+        f"¿Se confirma la modificación de la reservación, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
+    ):
         asiento_actualizar(
             asiento,
             estado=OCUPADO,
@@ -216,7 +227,7 @@ def comando_modificacion_de_reservaciones(asientos):
         )
 
     if pedir_respuesta(
-        "¿Se desea continuar con la Modificación de Reservaciones, (S/N)? "
+        f"¿Se desea continuar con la Modificación de Reservaciones, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
     ):
         return comando_modificacion_de_reservaciones(asientos)
 
@@ -278,7 +289,7 @@ def subcomando_submenu_consulta_de_reservaciones_pasajero(asientos):
         imprimir_error_esperar("Pasajero no registrado.")
 
         if pedir_respuesta(
-            "¿Se desea continuar con la Consulta de Reservaciones por Nombre del Pasajero, (S/N)? "
+            f"¿Se desea continuar con la Consulta de Reservaciones por Nombre del Pasajero, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
         ):
             return subcomando_submenu_consulta_de_reservaciones_pasajero(asientos)
         return comando_submenu_consulta_de_reservaciones(asientos)
@@ -286,7 +297,7 @@ def subcomando_submenu_consulta_de_reservaciones_pasajero(asientos):
     imprimir_pasajero_por_asiento(encontrado)
 
     if pedir_respuesta(
-        "¿Se desea continuar con la Consulta de Reservaciones por Nombre del Pasajero, (S/N)? "
+        f"¿Se desea continuar con la Consulta de Reservaciones por Nombre del Pasajero, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
     ):
         return subcomando_submenu_consulta_de_reservaciones_pasajero(asientos)
     return comando_submenu_consulta_de_reservaciones(asientos)
@@ -298,7 +309,7 @@ def subcomando_submenu_consulta_de_reservaciones_asiento(asientos):
     imprimir_asientos(asientos)
 
     elegido = pedir_asiento(
-        "Elige el asiento a consultar (0 para volver al menú principal): "
+        f"Elige el asiento a consultar ({color.CABECERA}0{color.FIN} para volver al menú principal): "
     )
     if elegido == 0:
         return comando_submenu_consulta_de_reservaciones(asientos)
@@ -309,7 +320,7 @@ def subcomando_submenu_consulta_de_reservaciones_asiento(asientos):
         imprimir_error_esperar("Número del asiento no está ocupado.")
 
         if pedir_respuesta(
-            "¿Se desea continuar con la Consulta de Reservaciones por Número del Asiento, (S/N)? "
+            f"¿Se desea continuar con la Consulta de Reservaciones por Número del Asiento, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
         ):
             return subcomando_submenu_consulta_de_reservaciones_asiento(asientos)
         return comando_submenu_consulta_de_reservaciones(asientos)
@@ -317,7 +328,7 @@ def subcomando_submenu_consulta_de_reservaciones_asiento(asientos):
     imprimir_pasajero_por_asiento(asiento)
 
     if pedir_respuesta(
-        "¿Se desea continuar con la Consulta de Reservaciones por Número del Asiento, (S/N)? "
+        f"¿Se desea continuar con la Consulta de Reservaciones por Número del Asiento, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
     ):
         return subcomando_submenu_consulta_de_reservaciones_asiento(asientos)
     return comando_submenu_consulta_de_reservaciones(asientos)
@@ -342,6 +353,6 @@ def comando_reporte_de_reservaciones(asientos):
             ocupados += 1
 
     desocupados = 28 - ocupados
-    print(f"Total de asientos ocupados: {ocupados:>5}")
-    print(f"Total de asientos desocupados: {desocupados:>2}")
+    print(f"Total de asientos ocupados: {color.NEGRITAS}{ocupados:>5}{color.FIN}")
+    print(f"Total de asientos desocupados: {color.NEGRITAS}{desocupados:>2}{color.FIN}")
     esperar_continuar()

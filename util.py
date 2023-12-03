@@ -1,3 +1,4 @@
+import color
 import re
 import os
 import sys
@@ -212,7 +213,7 @@ def pedir_respuesta(texto="¿Se desea continuar, (S/N)? "):
 
 
 def imprimir_encabezado(s):
-    print(s)
+    print(f"{color.NEGRITAS}{color.OKAZUL}{s}{color.FIN}")
     print("=" * len(s) + "\n")
 
 
@@ -224,11 +225,11 @@ def limpiar_pantalla():
 
 
 def mensaje(s):
-    return f"*** {s}\n    Presionar <Enter> para continuar. "
+    return f"*** {s}\n    Presionar {color.CABECERA}<Enter>{color.FIN} para continuar. "
 
 
 def mensaje_error(s):
-    return f"*** Error: {s}\n    Presionar <Enter> para continuar. "
+    return f"*** {color.ERROR}Error{color.FIN}: {s}\n    Presionar {color.CABECERA}<Enter>{color.FIN} para continuar. "
 
 
 def imprimir_esperar(s):
@@ -240,7 +241,7 @@ def imprimir_error_esperar(s):
 
 
 def esperar_continuar():
-    tic_entrada("Presionar <ENTER> para continuar. ")
+    tic_entrada(f"Presionar {color.CABECERA}<ENTER>{color.FIN} para continuar. ")
 
 
 def es_afirmativo(s):

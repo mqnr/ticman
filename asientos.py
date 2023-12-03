@@ -1,3 +1,4 @@
+import color
 import mapa
 import destinos
 from util import tic_imprimir
@@ -103,14 +104,26 @@ def asiento_desocupar(asiento):
 def imprimir_pasajero_por_datos(
     asiento, nombre_pasajero, identificacion_pasajero, destino_codigo
 ):
-    print(f"• Nombre del pasajero: {nombre_pasajero}")
-    print(f"• Identificación del pasajero: {identificacion_pasajero}")
-    print(f"• Destino del pasajero: {destinos.codigo_a_largo(destino_codigo)}")
-    print(f"• Clase del asiento: {mapa.obtener(asiento, 'clase')}")
-    print(f"• Ubicación del asiento: {mapa.obtener(asiento, 'ubicacion')}")
-    print(f"• Número del asiento: {mapa.obtener(asiento, 'numero')}")
+    print(
+        f"• {color.NEGRITAS}{color.NEGRITAS}Nombre del pasajero{color.FIN}: {nombre_pasajero}"
+    )
+    print(
+        f"• {color.NEGRITAS}Identificación del pasajero{color.FIN}: {identificacion_pasajero}"
+    )
+    print(
+        f"• {color.NEGRITAS}Destino del pasajero{color.FIN}: {destinos.codigo_a_largo(destino_codigo)}"
+    )
+    print(
+        f"• {color.NEGRITAS}Clase del asiento{color.FIN}: {mapa.obtener(asiento, 'clase')}"
+    )
+    print(
+        f"• {color.NEGRITAS}Ubicación del asiento{color.FIN}: {mapa.obtener(asiento, 'ubicacion')}"
+    )
+    print(
+        f"• {color.NEGRITAS}Número del asiento{color.FIN}: {mapa.obtener(asiento, 'numero')}"
+    )
     costo = calcular_tarifa(mapa.obtener(asiento, "clase"), destino_codigo)
-    print(f"• Costo del boleto del pasajero: ${costo:,.2f}")
+    print(f"• {color.NEGRITAS}Costo del boleto del pasajero{color.FIN}: ${costo:,.2f}")
 
 
 def imprimir_pasajero_por_asiento(asiento):
@@ -122,20 +135,28 @@ def imprimir_pasajero_por_asiento(asiento):
     def oa(s):
         return mapa.obtener(asiento, s)
 
-    print(f"• Nombre del pasajero: {op('nombre')}")
-    print(f"• Identificación del pasajero: {op('id')}")
-    print(f"• Destino del pasajero: {oa('destino_largo')}")
-    print(f"• Clase del asiento: {oa('clase')}")
-    print(f"• Ubicación del asiento: {oa('ubicacion')}")
-    print(f"• Número del asiento: {oa('numero')}")
-    print(f"• Costo del boleto del pasajero: ${oa('costo'):,.2f}")
+    print(f"• {color.NEGRITAS}Nombre del pasajero{color.FIN}: {op('nombre')}")
+    print(f"• {color.NEGRITAS}Identificación del pasajero{color.FIN}: {op('id')}")
+    print(f"• {color.NEGRITAS}Destino del pasajero{color.FIN}: {oa('destino_largo')}")
+    print(f"• {color.NEGRITAS}Clase del asiento{color.FIN}: {oa('clase')}")
+    print(f"• {color.NEGRITAS}Ubicación del asiento{color.FIN}: {oa('ubicacion')}")
+    print(f"• {color.NEGRITAS}Número del asiento{color.FIN}: {oa('numero')}")
+    print(
+        f"• {color.NEGRITAS}Costo del boleto del pasajero{color.FIN}: ${oa('costo'):,.2f}"
+    )
 
 
 def imprimir_asientos(asientos):
     def f(asiento):
+        destino = mapa.obtener(asiento, "destino_codigo")
+        destino = (
+            f"{color.OKCIAN}{destino}{color.FIN}"
+            if destino != destinos.TIC
+            else f"{color.GRIS}{destino}{color.FIN}"
+        )
         return (
-            f" {str(mapa.obtener(asiento, 'numero')).rjust(2)}"
-            f" {mapa.obtener(asiento, 'destino_codigo')} "
+            f" {color.NEGRITAS}{str(mapa.obtener(asiento, 'numero')).rjust(2)}{color.FIN}"
+            f" {destino} "
         )
 
     def o(n):
@@ -208,15 +229,19 @@ def imprimir_asientos_lista(asientos):
     lgt_mi = len(max_identificacion)
     lgt_d = len(max_destino)
     lgt_c = len(max_costo)
-    encabezado = f"{'No. del':^{nodel}} {'':^{lgt_mn}} {'':^{lgt_mi}} {'':^{lgt_d}} {'Clase del':^{lgt_clase}} {'Ubicación':^{lgt_ubicacion}} {'Costo':^{lgt_c}}"
+    encabezado = f"{color.NEGRITAS}{'No. del':^{nodel}} {'':^{lgt_mn}} {'':^{lgt_mi}} {'':^{lgt_d}} {'Clase del':^{lgt_clase}} {'Ubicación':^{lgt_ubicacion}} {'Costo':^{lgt_c}}{color.FIN}"
     lgt_encabezado = len(encabezado)
 
-    print(f"{'Transportes Intergalácticos de Cajeme, S.A.':^{lgt_encabezado}}\n")
-    print(f"{'Reporte de Reservaciones':^{lgt_encabezado}}")
+    print(
+        f"{color.NEGRITAS}{color.OKCIAN}{'Transportes Intergalácticos de Cajeme, S.A.':^{lgt_encabezado}}{color.FIN}\n"
+    )
+    print(
+        f"{color.NEGRITAS}{color.OKCIAN}{'Reporte de Reservaciones':^{lgt_encabezado}}{color.FIN}"
+    )
     print("─" * len(encabezado))
     print(encabezado)
     print(
-        f"{'Asiento':^{nodel}} {'Nombre':^{lgt_mn}} {'Identificación':^{lgt_mi}} {'Destino':^{lgt_d}} {'Asiento':^{lgt_clase}} {'del Asiento':^{lgt_ubicacion}} {'del Boleto':^{lgt_c}}"
+        f"{color.NEGRITAS}{'Asiento':^{nodel}} {'Nombre':^{lgt_mn}} {'Identificación':^{lgt_mi}} {'Destino':^{lgt_d}} {'Asiento':^{lgt_clase}} {'del Asiento':^{lgt_ubicacion}} {'del Boleto':^{lgt_c}}{color.FIN}"
     )
     print("─" * len(encabezado))
     for n, asiento in asientos:
@@ -225,7 +250,7 @@ def imprimir_asientos_lista(asientos):
         def op(s):
             if pasajero is None:
                 if s == "nombre":
-                    return "*** Disponible ***"
+                    return f"{color.GRIS}*** Disponible ***{color.FIN}"
                 return ""
 
             dev = mapa.obtener(pasajero, s)
@@ -239,7 +264,7 @@ def imprimir_asientos_lista(asientos):
         def i(s):
             print(s, end=" ")
 
-        i(f"{n:^{nodel}}")
+        i(f"{color.NEGRITAS}{n:^{nodel}}{color.FIN}")
         i(f"{op('nombre'):<{lgt_mn}}")
         i(f"{op('id'):<{lgt_mi}}")
         destino = oa("destino_largo")
