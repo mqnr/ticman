@@ -66,6 +66,10 @@ def asiento_esta_ocupado(asiento):
     return mapa.obtener(asiento, "estado") == OCUPADO
 
 
+def asiento_numero(asiento):
+    return mapa.obtener(asiento, "numero")
+
+
 def calcular_tarifa(clase, destino):
     costos = mapa.obtener(TARIFAS, clase)
     return mapa.obtener(costos, destino)

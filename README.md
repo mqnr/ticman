@@ -1,6 +1,6 @@
 # TIC Manager (ticman)
 
-ticman is a CRUD terminal app. It's the first semester's final project for our Software Engineering undergrad. We avoided several useful features of Python because we hadn't seen them in class yet, though we broke this rule in three places, namely in making the program take a `--color` flag to enable colored output, in using regexes, and in handling exceptions.
+ticman is a CRUD terminal app. It's the first semester's final project for our Software Engineering undergrad. We avoided several useful features of Python because we hadn't seen them in class yet, though we broke this rule in three places, namely in making the program take a `--color` flag to enable colored output, a `--cargar` flag to load seats from files, in using regexes, and in handling exceptions.
 
 ## What does it do?
 
