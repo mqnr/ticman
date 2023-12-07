@@ -244,6 +244,31 @@ def esperar_continuar():
     tic_entrada(f"Presionar {color.CABECERA}<ENTER>{color.FIN} para continuar. ")
 
 
+def imprimir_reporte_archivos_cargados(
+    argumentos, cargados, errores_archivos, errores_asientos
+):
+    if "--cargar" in argumentos:
+        if len(errores_archivos) > 0:
+            print(
+                f"{color.ERROR}ERROR: No se pudieron cargar los siguientes archivos (¿existen?){color.FIN}"
+            )
+            for archivo in errores_archivos:
+                print(f"    - {color.NEGRITAS}{archivo}{color.FIN}")
+        if len(errores_asientos) > 0:
+            print(
+                f"{color.ERROR}ERROR: Los siguientes archivos tuvieron entradas mal formadas [nombre del archivo seguido por los índices de entradas]:{color.FIN}"
+            )
+            for nombre, entradas_fallidas in errores_asientos:
+                print(
+                    f"    - {color.NEGRITAS}{nombre}{color.FIN}: {', '.join(str(n) for n in entradas_fallidas)}"
+                )
+    plural = "s" if cargados != 1 else ""
+    if cargados > 0:
+        print(
+            f"{color.OKVERDE}✓ Cargado{plural} {color.NEGRITAS}{cargados}{color.FIN}{color.OKVERDE} asiento{plural} de archivos{color.FIN}"
+        )
+
+
 def es_afirmativo(s):
     """
     Determinar si una cadena de texto entrada por el usuario
