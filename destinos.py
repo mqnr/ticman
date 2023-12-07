@@ -16,13 +16,13 @@ def codigo_a_largo(codigo):
     return ""
 
 
-def largo_a_codigo(codigo):
-    if codigo == "Sin destino":
+def largo_a_codigo(largo):
+    if largo == "Sin destino":
         return "TIC"
-    if codigo == "Luna":
+    if largo == "Luna":
         return "LUN"
-    if codigo == "Europa":
+    if largo == "Europa":
         return "EUR"
-    if codigo == "Titán":
+    if largo == "Titán":
         return "TAN"
     return ""
