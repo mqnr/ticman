@@ -296,7 +296,7 @@ def imprimir_asientos_lista(asientos):
         def op(s):
             if pasajero is None:
                 if s == "nombre":
-                    return f"{color.GRIS}*** Disponible ***{color.FIN}"
+                    return nombre_predeterminado
                 return ""
 
             dev = mapa.obtener(pasajero, s)
@@ -311,7 +311,11 @@ def imprimir_asientos_lista(asientos):
             print(s, end=" ")
 
         i(f"{color.NEGRITAS}{n:^{nodel}}{color.FIN}")
-        i(f"{op('nombre'):<{lgt_mn}}")
+        nombre = op("nombre")
+        if nombre == nombre_predeterminado:
+            i(f"{color.GRIS}{nombre:<{lgt_mn}}{color.FIN}")
+        else:
+            i(f"{op('nombre'):<{lgt_mn}}")
         i(f"{op('id'):<{lgt_mi}}")
         destino = oa("destino_largo")
         d = destino if oa("destino_codigo") != destinos.TIC else ""
