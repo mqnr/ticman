@@ -5,24 +5,24 @@ TAN = "TAN"
 
 
 def codigo_a_largo(codigo):
-    if codigo == "TIC":
+    if codigo == TIC:
         return "Sin destino"
-    if codigo == "LUN":
+    if codigo == LUN:
         return "Luna"
-    if codigo == "EUR":
+    if codigo == EUR:
         return "Europa"
-    if codigo == "TAN":
+    if codigo == TAN:
         return "Titán"
     return ""
 
 
 def largo_a_codigo(largo):
     if largo == "Sin destino":
-        return "TIC"
+        return TIC
     if largo == "Luna":
-        return "LUN"
+        return LUN
     if largo == "Europa":
-        return "EUR"
+        return EUR
     if largo == "Titán":
-        return "TAN"
+        return TAN
     return ""
