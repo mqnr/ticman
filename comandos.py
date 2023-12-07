@@ -167,7 +167,7 @@ def comando_modificacion_de_reservaciones(asientos):
         if pedir_respuesta(
             f"¿Se desea continuar con la Modificación de Reservaciones, ({color.CABECERA}S{color.FIN}/{color.CABECERA}N{color.FIN})? "
         ):
-            return comando_eliminacion_de_reservaciones(asientos)
+            return comando_modificacion_de_reservaciones(asientos)
         return
 
     imprimir_pasajero_por_asiento(asiento)
