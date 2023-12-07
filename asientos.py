@@ -32,6 +32,17 @@ PASILLO = "Pasillo"
 
 
 def asiento_vacio(n):
+    """
+    Asignar un asiento vacío basándose en el número de asiento proporcionado.
+    Determinar la clase del asiento (Ejecutivo o Económico) y su ubicación
+    (Ventana, Pasillo, Centro) basándose en el número de asiento. El estado del
+    asiento se establece como 'desocupado', y se asignan valores predeterminados
+    para el destino y el costo.
+
+    :param n: el número de asiento
+    :returns: un pseudo-mapa con los detalles del asiento, incluyendo número,
+        ubicación, clase, estado, código y destino largo, costo, y pasajero
+    """
     ubicacion = ""
     if n in range(1, 5):
         clase = EJECUTIVO
@@ -63,19 +74,45 @@ def asiento_vacio(n):
 
 
 def asiento_esta_ocupado(asiento):
+    """
+    Verificar si un asiento está ocupado.
+
+    :param asiento: el asiento
+    :returns: True si el asiento está ocupado, de lo contrario False
+    """
     return mapa.obtener(asiento, "estado") == OCUPADO
 
 
 def asiento_numero(asiento):
+    """Devuelve el número de un asiento."""
     return mapa.obtener(asiento, "numero")
 
 
 def calcular_tarifa(clase, destino):
+    """
+    Calcular la tarifa para un viaje en función de la clase y el destino.
+    Utilizar un pseudo-mapa de tarifas predefinido para determinar el costo del
+    viaje basado en la clase del asiento y el destino.
+
+    :param clase: la clase del asiento (Ejecutiva o Económica)
+    :param destino: el código del destino
+    :returns: la tarifa calculada para el viaje
+    """
     costos = mapa.obtener(TARIFAS, clase)
     return mapa.obtener(costos, destino)
 
 
 def asiento_actualizar(asiento, estado=None, destino_codigo=None, pasajero=object()):
+    """
+    Actualizar los detalles de un asiento. Modificar el estado, destino y
+    pasajero del asiento según los parámetros proporcionados. También recalcular
+    el costo si el destino cambia.
+
+    :param asiento: el asiento a actualizar
+    :param estado: el nuevo estado del asiento (ocupado o desocupado), opcional
+    :param destino_codigo: el nuevo código de destino, opcional
+    :param pasajero: el nuevo pasajero, opcional
+    """
     _sin_valor = object()
 
     destino_cambiado = False
@@ -100,6 +137,11 @@ def asiento_actualizar(asiento, estado=None, destino_codigo=None, pasajero=objec
 
 
 def asiento_desocupar(asiento):
+    """
+    Desocupar un asiento y restablecer su estado a valores predeterminados.
+
+    :param asiento: el asiento a desocupar
+    """
     asiento_actualizar(
         asiento, estado=DESOCUPADO, destino_codigo=destinos.TIC, pasajero=None
     )
