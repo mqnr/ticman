@@ -18,7 +18,7 @@ As was said, it's a pretty standard CRUD app. You can create seat reservations f
 
 ## On not using built-in dictionaries
 
-This proved to be our most pervasive constraint. We wrote four trivial functions to help us treat lists of two-valued tuples as dictionaries, which we termed "pseudo-maps," and then built abstractions on top them. Here's what using pseudo-map looks like:
+This proved to be our most pervasive constraint. We wrote four trivial functions to help us treat lists of two-valued tuples as dictionaries, which we termed "pseudo-maps," and then built abstractions on top of them. Here's what using a pseudo-map looks like:
 
 ```python
 pmapa = mapa.nuevo((1, "one"), (2, "two"), (3, "three"))
