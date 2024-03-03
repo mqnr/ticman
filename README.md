@@ -4,7 +4,7 @@ ticman is a CRUD terminal app. It's the first semester's final project for our S
 
 ## What does it do?
 
-As was said, it's a pretty standard CRUD app. You can create seat reservations for a flight, you can update them, delete them, see the seating map, and whatnot. However, no data is persisted.
+As was said, it's a pretty standard CRUD app. You can create seat reservations for a flight, you can update them, delete them, view the seating map, and whatnot. However, no data is persisted.
 
 ## Self-imposed constraints
 
