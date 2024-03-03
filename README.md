@@ -1,6 +1,6 @@
 # TIC Manager (ticman)
 
-ticman is a CRUD terminal app. It's the first semester's final project for our Software Engineering undergrad. We avoided several useful features of Python because we hadn't seen them in class yet, though we broke this rule in three places, namely in making the program take a `--color` flag to enable colored output, a `--cargar` flag to load seats from files, in using regexes, and in handling exceptions.
+ticman is a CRUD terminal app. It's the first semester's final project for our Software Engineering undergrad. We avoided several useful features of Python because we hadn't seen them in class yet, though we broke this rule in four places, namely in making the program take a `--color` flag to enable colored output, a `--cargar` flag to load seats from files, in using regexes, and in handling exceptions.
 
 ## What does it do?
 
@@ -18,7 +18,7 @@ As was said, it's a pretty standard CRUD app. You can create seat reservations f
 
 ## On not using built-in dictionaries
 
-This proved to be our most interesting constraint. We wrote four simple functions to help us treat lists of two-valued tuples as dictionaries, which we termed "pseudo-maps." Here's what managing a pseudo-map looks like:
+This proved to be our most pervasive constraint. We wrote four trivial functions to help us treat lists of two-valued tuples as dictionaries, which we termed "pseudo-maps," and then built abstractions on top them. Here's what using pseudo-map looks like:
 
 ```python
 pmapa = mapa.nuevo((1, "one"), (2, "two"), (3, "three"))
